@@ -5,6 +5,7 @@ import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.sora.fx.beans.MainScreenConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -32,6 +33,10 @@ public class Application extends javafx.application.Application {
         // Start Spring container
         ApplicationContext context = SpringApplication.run(Application.class, args);
         log.debug("Spring context load ok.");
+
+        // start JavaFX spring configuration
+        MainScreenConfiguration screens = context.getBean(MainScreenConfiguration.class);
+        screens.initMainScreen(primaryStage);
 
         log.debug("END start.");
     }

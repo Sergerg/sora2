@@ -37,7 +37,7 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter")
 	compile("org.springframework:spring-jdbc")
 	compile("com.h2database:h2")
-	compile("javax.inject:javax.inject:1")
+//	compile("javax.inject:javax.inject:1")
 //	compile 'com.h2database:h2:1.4.191'
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 }
