@@ -12,8 +12,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import java.io.IOException;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -40,8 +38,8 @@ public class MainScreenConfiguration {
     private String mainResource;
 
     @Bean
-    public MainForm mainForm() {
-        return new MainForm(mainView, windowTitle, mainResource);
+    public FormInterface mainForm() {
+        return new MainFormBean(mainView, mainResource);
     }
 
     public void initMainScreen(Stage primaryStage) throws IOException {

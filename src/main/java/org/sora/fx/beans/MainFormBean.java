@@ -19,17 +19,15 @@ import java.util.ResourceBundle;
  * Date: 05.08.2016
  * Time: 18:33
  */
-public class MainForm {
+public class MainFormBean implements FormInterface {
 
     private static final Logger log = LoggerFactory.getLogger(MainScreenConfiguration.class);
 
     private String mainView;
-    private String windowTitle;
     private String mainResource;
 
-    public MainForm(String mainView, String windowTitle, String mainResource) {
+    public MainFormBean(String mainView, String mainResource) {
         this.mainView = mainView;
-        this.windowTitle = windowTitle;
         this.mainResource = mainResource;
     }
 
@@ -41,17 +39,28 @@ public class MainForm {
         return new MainScreenController();
     }
 
+    @Override
+    public String getView() {
+        return mainView;
+    }
+
+    @Override
+    public String getResource() {
+        return mainResource;
+    }
+
+    @Override
     public Scene getScene() {
-        log.info("MainForm getParent");
+        log.info("MainFormBean getParent");
         try {
-            URL fxmlUrl = getClass().getResource(appGuiConfiguration.nameFxmlConverter(mainView));
-            FXMLLoader loader = new FXMLLoader(fxmlUrl, ResourceBundle.getBundle(mainResource)); // Может как-то по-умолчанию из spring?
+            URL fxmlUrl = getClass().getResource(appGuiConfiguration.nameFxmlConverter(getView()));
+            FXMLLoader loader = new FXMLLoader(fxmlUrl, ResourceBundle.getBundle(getResource())); // Может как-то по-умолчанию из spring?
             loader.setControllerFactory(aClass -> controller());
             Parent view = loader.load();
 
             Scene scene = new Scene(view);
             scene.getStylesheets().add(getClass().getResource(
-                    appGuiConfiguration.nameCssConverter(mainView)).toExternalForm());
+                    appGuiConfiguration.nameCssConverter(getView())).toExternalForm());
 
             return scene;
         } catch (IOException e) {
