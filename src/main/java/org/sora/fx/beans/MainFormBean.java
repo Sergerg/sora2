@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sora.fx.controllers.MainScreenController;
+import org.sora.fx.services.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 
@@ -34,10 +35,10 @@ public class MainFormBean implements FormInterface {
     @Autowired
     AppGuiConfiguration appGuiConfiguration;
 
-    @Bean
-    MainScreenController controller() {
-        return new MainScreenController();
-    }
+//    @Bean
+//    MainScreenController controller() {
+//        return new MainScreenController();
+//    }
 
     @Override
     public String getView() {
@@ -55,7 +56,7 @@ public class MainFormBean implements FormInterface {
         try {
             URL fxmlUrl = getClass().getResource(appGuiConfiguration.nameFxmlConverter(getView()));
             FXMLLoader loader = new FXMLLoader(fxmlUrl, ResourceBundle.getBundle(getResource())); // Может как-то по-умолчанию из spring?
-            loader.setControllerFactory(aClass -> controller());
+//            loader.setControllerFactory(aClass -> controller());
             Parent view = loader.load();
 
             Scene scene = new Scene(view);

@@ -4,3 +4,6 @@ CREATE TABLE contact (
   email text,
   phone text
 );
+
+INSERT INTO contact (nick, name, email, phone)
+VALUES ('adm', 'Admin', 'admin@a.a', '');

@@ -1,9 +1,11 @@
 package org.sora.fx.controllers;
 
-import org.sora.fx.beans.MainScreenConfiguration;
 import javafx.fxml.Initializable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.sora.fx.services.ContactService;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,6 +20,9 @@ public class MainScreenController implements Initializable {
 
     private static final Logger log = LoggerFactory.getLogger(MainScreenController.class);
 
+    @Autowired
+    private ContactService contactService;
+
     public MainScreenController() {
         log.debug("MainScreenController()");
     }
@@ -25,6 +30,7 @@ public class MainScreenController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         log.debug("initialize() ");
+        log.info("size of contacts = " + contactService);
     }
 
     public void showErrorDialog() {
