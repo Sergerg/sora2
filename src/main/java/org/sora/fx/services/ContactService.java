@@ -20,4 +20,6 @@ public interface ContactService {
     int edit(Contact contact);
 
     int delContact(Contact contact);
+
+    Contact get(String nick);
 }

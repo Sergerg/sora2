@@ -56,8 +56,7 @@ public class Contact {
 
         Contact contact = (Contact) o;
 
-        return nick.equals(contact.nick);
-
+        return nick.getName().equals(contact.nick.getName());
     }
 
     @Override

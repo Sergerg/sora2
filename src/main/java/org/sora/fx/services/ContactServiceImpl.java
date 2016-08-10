@@ -23,10 +23,12 @@ public class ContactServiceImpl implements ContactService {
 
     private ObservableList<Contact> data = FXCollections.observableArrayList();
 
+    @Override
     public ObservableList<Contact> getData() {
         return data;
     }
 
+    @Override
     public void loadData() {
         data.clear();
         data.addAll(jdbcTemplate.query("SELECT * FROM contact ", (rs, arg1) -> {
@@ -56,6 +58,22 @@ public class ContactServiceImpl implements ContactService {
     public int delContact(Contact contact) {
         String sql = "DELETE contact WHERE nick=?";
         return jdbcTemplate.update(sql, contact.getNick());
+
+    }
+
+    @Override
+    public Contact get(String nick) {
+        return
+                jdbcTemplate.queryForObject(
+                        "SELECT nick, name, email, phone FROM contact WHERE nick = ?",
+                new Object[] {nick},
+                (rs, arg1) -> {
+                    return new Contact(
+                            rs.getString("nick"),
+                            rs.getString("name"),
+                            rs.getString("email"),
+                            rs.getString("phone"));
+        });
 
     }
 }
