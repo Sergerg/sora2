@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.sora.fx.services.ContactService;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,6 +22,7 @@ public class MainScreenController implements Initializable {
     private static final Logger log = LoggerFactory.getLogger(MainScreenController.class);
 
     @Autowired
+    @Qualifier("contactService")
     private ContactService contactService;
 
     public MainScreenController() {

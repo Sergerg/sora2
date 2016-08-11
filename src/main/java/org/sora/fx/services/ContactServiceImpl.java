@@ -6,7 +6,9 @@ import javafx.collections.ObservableList;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,8 +16,9 @@ import org.springframework.stereotype.Service;
  * Date: 08.09.2015
  * Time: 7:39
  */
-@Service
-//@Transactional
+@Service("contactService")
+@Repository
+@Transactional
 public class ContactServiceImpl implements ContactService {
 
     @Autowired
