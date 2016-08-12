@@ -1,0 +1,18 @@
+#pane {
+    /*-fx-background: gray;*/
+    -fx-border: dotted 1px black;
+    -fx-border-radius: 10px;
+}
+#btn {
+    /*-fx-color: aqua;*/
+    -fx-border: dotted 1px black;
+    -fx-border-radius: 30px;
+}
+
+.text-area {
+    -fx-text-alignment: center;
+    -fx-text-fill: red;
+    -fx-highlight-text-fill: wheat;
+    /*-fx-border: none 0px red;*/
+    -fx-border-style: dotted;
+}

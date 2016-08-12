@@ -5,11 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sora.fx.controllers.MainScreenController;
-import org.sora.fx.services.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,44 +14,32 @@ import java.util.ResourceBundle;
 /**
  * Created with IntelliJ IDEA.
  * User: Serger
- * Date: 05.08.2016
- * Time: 18:33
+ * Date: 12.08.2016
+ * Time: 14:25
  */
-public class MainFormBean implements FormInterface {
+public class FormBean implements FormInterface {
 
     private static final Logger log = LoggerFactory.getLogger(MainScreenConfiguration.class);
 
-    private String mainView;
-    private String mainResource;
+    private String viewName;
+    private String resourceName;
 
-    public MainFormBean(String mainView, String mainResource) {
-        this.mainView = mainView;
-        this.mainResource = mainResource;
+    public FormBean(String viewName, String mainResource) {
+        this.viewName = viewName;
+        this.resourceName = mainResource;
     }
 
     @Autowired
     AppGuiConfiguration appGuiConfiguration;
 
-    @Autowired
-    private ScreenConfiguration screenConfiguration;
-
-    @Autowired
-    @Qualifier("contactService")
-    ContactService contactService;
-
-    @Bean
-    MainScreenController controller() {
-        return new MainScreenController(screenConfiguration, contactService);
-    }
-
     @Override
     public String getView() {
-        return mainView;
+        return viewName;
     }
 
     @Override
     public String getResource() {
-        return mainResource;
+        return resourceName;
     }
 
     @Override
@@ -64,7 +48,7 @@ public class MainFormBean implements FormInterface {
         try {
             URL fxmlUrl = getClass().getResource(appGuiConfiguration.nameFxmlConverter(getView()));
             FXMLLoader loader = new FXMLLoader(fxmlUrl, ResourceBundle.getBundle(getResource())); // Может как-то по-умолчанию из spring?
-            loader.setControllerFactory(aClass -> controller());
+//            loader.setControllerFactory(aClass -> controller());
             Parent view = loader.load();
 
             Scene scene = new Scene(view);

@@ -7,6 +7,7 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,6 +39,7 @@ public class MainScreenConfiguration {
     private String mainResource;
 
     @Bean
+    @Qualifier("mainForm")
 //    @Scope("prototype")
     public FormInterface mainForm() {
         return new MainFormBean(mainView, mainResource);

@@ -19,7 +19,7 @@ package org.sora.fx.beans {
  }
 
  class MainFormBean {
-  +MainFormBean(String mainView, String mainResource)
+  +MainFormBean(String viewName, String mainResource)
  }
 
  class MainScreenController {
