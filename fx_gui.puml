@@ -1,0 +1,40 @@
+@startuml
+
+package org.sora.fx {
+ class Application {
+  +void start()
+ }
+}
+
+package org.sora.fx.beans {
+ class AppGuiConfiguration {
+  +String nameCssConverter(String part)
+  +String nameFxmlConverter(String part)
+ }
+
+ interface FormInterface {
+  Scene getScene();
+  String getView();
+  String getResource();
+ }
+
+ class MainFormBean {
+  +MainFormBean(String mainView, String mainResource)
+ }
+
+ class MainScreenController {
+  +void initialize(URL location, ResourceBundle resources)
+ }
+
+ class MainScreenConfiguration {
+  +void initMainScreen(Stage primaryStage)
+ }
+}
+
+MainFormBean -down-|> FormInterface
+
+MainFormBean -> AppGuiConfiguration
+
+MainScreenConfiguration -> FormInterface
+
+@enduml

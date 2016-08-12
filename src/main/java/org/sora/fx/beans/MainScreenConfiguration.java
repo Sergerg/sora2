@@ -38,6 +38,7 @@ public class MainScreenConfiguration {
     private String mainResource;
 
     @Bean
+//    @Scope("prototype")
     public FormInterface mainForm() {
         return new MainFormBean(mainView, mainResource);
     }
