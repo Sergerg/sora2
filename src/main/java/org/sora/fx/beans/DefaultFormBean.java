@@ -17,14 +17,14 @@ import java.util.ResourceBundle;
  * Date: 12.08.2016
  * Time: 14:25
  */
-public class FormBean implements FormInterface {
+public class DefaultFormBean implements FormInterface {
 
     private static final Logger log = LoggerFactory.getLogger(MainScreenConfiguration.class);
 
     private String viewName;
     private String resourceName;
 
-    public FormBean(String viewName, String mainResource) {
+    public DefaultFormBean(String viewName, String mainResource) {
         this.viewName = viewName;
         this.resourceName = mainResource;
     }
@@ -48,7 +48,6 @@ public class FormBean implements FormInterface {
         try {
             URL fxmlUrl = getClass().getResource(appGuiConfiguration.nameFxmlConverter(getView()));
             FXMLLoader loader = new FXMLLoader(fxmlUrl, ResourceBundle.getBundle(getResource())); // Может как-то по-умолчанию из spring?
-//            loader.setControllerFactory(aClass -> controller());
             Parent view = loader.load();
 
             Scene scene = new Scene(view);

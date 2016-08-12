@@ -24,7 +24,7 @@ public class ScreenConfiguration {
     @Qualifier("form")
     @Scope("prototype")
     public FormInterface form(String name) {
-        return new FormBean(name, name);
+        return new DefaultFormBean(name, name);
     }
 
 
