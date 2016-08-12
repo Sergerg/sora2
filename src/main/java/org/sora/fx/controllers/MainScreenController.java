@@ -3,10 +3,8 @@ package org.sora.fx.controllers;
 import javafx.fxml.Initializable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import org.sora.fx.services.ContactService;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,18 +19,20 @@ public class MainScreenController implements Initializable {
 
     private static final Logger log = LoggerFactory.getLogger(MainScreenController.class);
 
-    @Autowired
-    @Qualifier("contactService")
     private ContactService contactService;
 
-    public MainScreenController() {
+    public MainScreenController(ContactService contactService) {
         log.debug("MainScreenController()");
+        this.contactService = contactService;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         log.debug("initialize() ");
-        log.info("size of contacts = " + contactService);
+        if (contactService != null) {
+            contactService.loadData();
+            log.info("size of contacts = " + contactService.getData().size());
+        }
     }
 
     public void showErrorDialog() {
