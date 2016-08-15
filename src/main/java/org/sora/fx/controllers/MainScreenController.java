@@ -1,8 +1,5 @@
 package org.sora.fx.controllers;
 
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.MenuBar;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
@@ -21,7 +18,7 @@ import java.util.ResourceBundle;
  * Date: 03.09.2015
  * Time: 8:42
  */
-public class MainScreenController implements Initializable {
+public class MainScreenController extends AbstractController {
 
     private static final Logger log = LoggerFactory.getLogger(MainScreenController.class);
 
@@ -54,6 +51,7 @@ public class MainScreenController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(formInterface.getScene());
             stage.setTitle("Login");
+            // TODO: make modal
             //stage.initOwner(((Stage)menuBar.getScene().getWindow()));
             stage.initModality(Modality.NONE); // !!!
             stage.show();
@@ -71,6 +69,7 @@ public class MainScreenController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(formInterface.getScene());
             stage.setTitle("Error");
+            // TODO: make modal
             stage.initModality(Modality.WINDOW_MODAL);
             stage.show();
         }

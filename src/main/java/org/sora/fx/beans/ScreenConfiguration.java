@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Scope;
 @Lazy
 public class ScreenConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(MainScreenConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(ScreenConfiguration.class);
 
     @Bean
     @Qualifier("form")

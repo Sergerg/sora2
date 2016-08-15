@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
  */
 public class DefaultFormBean implements FormInterface {
 
-    private static final Logger log = LoggerFactory.getLogger(MainScreenConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(DefaultFormBean.class);
 
     private String viewName;
     private String resourceName;

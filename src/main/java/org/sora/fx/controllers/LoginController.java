@@ -2,7 +2,6 @@ package org.sora.fx.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
@@ -17,14 +16,9 @@ import java.util.ResourceBundle;
  * Date: 15.08.2016
  * Time: 9:10
  */
-public class LoginController implements Initializable {
+public class LoginController extends AbstractController {
 
-    private static final Logger log = LoggerFactory.getLogger(MainScreenController.class);
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        log.debug("initialize");
-    }
+    private static final Logger log = LoggerFactory.getLogger(LoginController.class);
 
     @FXML
     Button btnOk;
