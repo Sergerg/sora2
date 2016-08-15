@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="pane" alignment="TOP_CENTER"
+      xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.sora.fx.controllers.LoginController">
+    <children>
+        <TextField></TextField>
+        <TextField></TextField>
+        <HBox>
+            <children>
+                <Button fx:id="btnCancel" onAction="#cancel" text="cancel">
+                    <VBox.margin>
+                        <Insets top="40.0" />
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="btnOk" onAction="#ok" text="ok">
+                    <VBox.margin>
+                        <Insets top="40.0" />
+                    </VBox.margin>
+                </Button>
+            </children>
+        </HBox>
+    </children>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+</VBox>
