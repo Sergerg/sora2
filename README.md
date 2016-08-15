@@ -16,3 +16,9 @@ to run:
 5. UML. (uses plantuml).
 6. Default forms. Error form.
 
+
+
+TODO:
+1. Login form.
+2. Table form.
+3. Autowired service into Controller!!!
