@@ -23,8 +23,8 @@ public class ScreenConfiguration {
     @Bean
     @Qualifier("form")
     @Scope("prototype")
-    public FormInterface form(String name) {
-        return new DefaultFormBean(name, name);
+    public SceneInterface form(String name) {
+        return new DefaultSceneBean(name, name);
     }
 
 

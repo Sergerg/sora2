@@ -21,4 +21,5 @@ public class AbstractController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         log.debug("initialize");
     }
+
 }

@@ -8,7 +8,7 @@ import javafx.scene.Scene;
  * Date: 05.08.2016
  * Time: 19:19
  */
-public interface FormInterface {
+public interface SceneInterface {
     Scene getScene();
     String getView();
     String getResource();

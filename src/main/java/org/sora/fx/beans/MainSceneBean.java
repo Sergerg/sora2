@@ -5,7 +5,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.sora.fx.controllers.MainScreenController;
+import org.sora.fx.services.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,40 +18,53 @@ import java.util.ResourceBundle;
 /**
  * Created with IntelliJ IDEA.
  * User: Serger
- * Date: 12.08.2016
- * Time: 14:25
+ * Date: 05.08.2016
+ * Time: 18:33
  */
-public class DefaultFormBean implements FormInterface {
+public class MainSceneBean implements SceneInterface {
 
-    private static final Logger log = LoggerFactory.getLogger(DefaultFormBean.class);
+    private static final Logger log = LoggerFactory.getLogger(MainScreenConfiguration.class);
 
-    private String viewName;
-    private String resourceName;
+    private String mainView;
+    private String mainResource;
 
-    public DefaultFormBean(String viewName, String mainResource) {
-        this.viewName = viewName;
-        this.resourceName = mainResource;
+    public MainSceneBean(String mainView, String mainResource) {
+        this.mainView = mainView;
+        this.mainResource = mainResource;
     }
 
     @Autowired
     AppGuiConfiguration appGuiConfiguration;
 
+    @Autowired
+    private ScreenConfiguration screenConfiguration;
+
+    @Autowired
+    @Qualifier("contactService")
+    ContactService contactService;
+
+    @Bean
+    MainScreenController controller() {
+        return new MainScreenController(screenConfiguration, contactService);
+    }
+
     @Override
     public String getView() {
-        return viewName;
+        return mainView;
     }
 
     @Override
     public String getResource() {
-        return resourceName;
+        return mainResource;
     }
 
     @Override
     public Scene getScene() {
-        log.info("MainFormBean getParent");
+        log.info("MainSceneBean getParent");
         try {
             URL fxmlUrl = getClass().getResource(appGuiConfiguration.nameFxmlConverter(getView()));
             FXMLLoader loader = new FXMLLoader(fxmlUrl, ResourceBundle.getBundle(getResource())); // Может как-то по-умолчанию из spring?
+            loader.setControllerFactory(aClass -> controller());
             Parent view = loader.load();
 
             Scene scene = new Scene(view);

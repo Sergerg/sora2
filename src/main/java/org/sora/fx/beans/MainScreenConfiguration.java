@@ -41,8 +41,8 @@ public class MainScreenConfiguration {
     @Bean
     @Qualifier("mainForm")
 //    @Scope("prototype")
-    public FormInterface mainForm() {
-        return new MainFormBean(mainView, mainResource);
+    public SceneInterface mainForm() {
+        return new MainSceneBean(mainView, mainResource);
     }
 
     public void initMainScreen(Stage primaryStage) throws IOException {

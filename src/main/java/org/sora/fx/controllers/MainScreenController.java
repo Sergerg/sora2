@@ -1,11 +1,12 @@
 package org.sora.fx.controllers;
 
+import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.sora.fx.beans.FormInterface;
+import org.sora.fx.beans.SceneInterface;
 import org.sora.fx.beans.ScreenConfiguration;
 import org.sora.fx.services.ContactService;
 
@@ -46,14 +47,16 @@ public class MainScreenController extends AbstractController {
         // TODO: afterload
         // TODO: move into specific class
         if (screenConfiguration != null) {
-            FormInterface formInterface = screenConfiguration.form("login");
+            SceneInterface sceneInterface = screenConfiguration.form("login");
 
             Stage stage = new Stage();
-            stage.setScene(formInterface.getScene());
+            Scene scene = sceneInterface.getScene();
+            stage.setScene(scene);
             stage.setTitle("Login");
             // TODO: make modal
-            //stage.initOwner(((Stage)menuBar.getScene().getWindow()));
+            // !!! stage.initOwner(scene.getWindow());
             stage.initModality(Modality.NONE); // !!!
+            stage.setResizable(true);
             stage.show();
         }
 
@@ -64,10 +67,10 @@ public class MainScreenController extends AbstractController {
 
         // TODO: move into specific class
         if (screenConfiguration != null) {
-            FormInterface formInterface = screenConfiguration.form("error");
+            SceneInterface sceneInterface = screenConfiguration.form("error");
 
             Stage stage = new Stage();
-            stage.setScene(formInterface.getScene());
+            stage.setScene(sceneInterface.getScene());
             stage.setTitle("Error");
             // TODO: make modal
             stage.initModality(Modality.WINDOW_MODAL);
