@@ -1,5 +1,6 @@
 package org.sora.fx.controllers;
 
+import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -36,30 +37,14 @@ public class MainScreenController extends AbstractController {
         this.screenConfiguration = screenConfiguration;
     }
 
-    @Override
+    //@Override
+    @FXML
     public void initialize(URL location, ResourceBundle resources) {
         log.debug("initialize() ");
         if (contactService != null) {
             contactService.loadData();
             log.info("size of contacts = " + contactService.getData().size());
         }
-
-        // TODO: afterload
-        // TODO: move into specific class
-        if (screenConfiguration != null) {
-            SceneInterface sceneInterface = screenConfiguration.form("login");
-
-            Stage stage = new Stage();
-            Scene scene = sceneInterface.getScene();
-            stage.setScene(scene);
-            stage.setTitle("Login");
-            // TODO: make modal
-            // !!! stage.initOwner(scene.getWindow());
-            stage.initModality(Modality.NONE); // !!!
-            stage.setResizable(true);
-            stage.show();
-        }
-
     }
 
     public void showErrorDialog() {
@@ -72,8 +57,7 @@ public class MainScreenController extends AbstractController {
             Stage stage = new Stage();
             stage.setScene(sceneInterface.getScene());
             stage.setTitle("Error");
-            // TODO: make modal
-            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
         }
 
@@ -81,5 +65,19 @@ public class MainScreenController extends AbstractController {
 
     public void test() {
         log.debug("test() ");
+
+        // TODO: move into specific class
+        if (screenConfiguration != null) {
+            SceneInterface sceneInterface = screenConfiguration.form("login");
+
+            Stage stage = new Stage();
+            Scene scene = sceneInterface.getScene();
+            stage.setScene(scene);
+            stage.setTitle("Login");
+//            stage.initOwner(scene.getWindow());
+            stage.initModality(Modality.APPLICATION_MODAL); // !!!
+            stage.setResizable(false);
+            stage.show();
+        }
     }
 }
