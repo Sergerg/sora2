@@ -4,9 +4,11 @@ import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -45,6 +47,9 @@ public class MainScreenConfiguration {
         return new MainSceneBean(mainView, mainResource);
     }
 
+    @Autowired
+    ScreenConfiguration screenConfiguration;
+
     public void initMainScreen(Stage primaryStage) throws IOException {
         log.debug("ScreensConfiguration initMainScreen");
 
@@ -75,6 +80,21 @@ public class MainScreenConfiguration {
         primaryStage.setScene(scene);
         primaryStage.setTitle(windowTitle);
         primaryStage.show();
+
+        // TODO: move into specific class
+        if (screenConfiguration != null) {
+            SceneInterface sceneInterface = screenConfiguration.form("login");
+
+            Stage stage = new Stage();
+            Scene scene1 = sceneInterface.getScene();
+            stage.setScene(scene1);
+            stage.setTitle("Login");
+//            stage.initOwner(scene.getWindow());
+            stage.initModality(Modality.APPLICATION_MODAL); // !!!
+            stage.setResizable(false);
+            stage.show();
+        }
+
     }
 
 }
