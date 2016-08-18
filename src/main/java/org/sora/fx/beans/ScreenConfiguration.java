@@ -1,7 +1,10 @@
 package org.sora.fx.beans;
 
+import javafx.scene.Scene;
+import javafx.stage.Modality;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.sora.fx.dialogs.BasicDialog;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,5 +30,20 @@ public class ScreenConfiguration {
         return new DefaultSceneBean(name, name);
     }
 
+    @Bean
+    @Qualifier("dialog")
+    @Scope("prototype")
+    public BasicDialog dialog(String title, String dialogName, Modality modal, boolean resizable) {
+        SceneInterface sceneInterface = form(dialogName);
 
+        BasicDialog stage = new BasicDialog();
+        Scene scene = sceneInterface.getScene();
+        stage.setScene(scene);
+        stage.setTitle(title);
+//            stage.initOwner(scene.getWindow());
+        stage.initModality(modal);
+        stage.setResizable(resizable);
+        stage.show();
+        return stage;
+    }
 }

@@ -42,7 +42,6 @@ public class MainScreenConfiguration {
 
     @Bean
     @Qualifier("mainForm")
-//    @Scope("prototype")
     public SceneInterface mainForm() {
         return new MainSceneBean(mainView, mainResource);
     }
@@ -81,19 +80,9 @@ public class MainScreenConfiguration {
         primaryStage.setTitle(windowTitle);
         primaryStage.show();
 
-        // TODO: move into specific class
-        if (screenConfiguration != null) {
-            SceneInterface sceneInterface = screenConfiguration.form("login");
-
-            Stage stage = new Stage();
-            Scene scene1 = sceneInterface.getScene();
-            stage.setScene(scene1);
-            stage.setTitle("Login");
-//            stage.initOwner(scene.getWindow());
-            stage.initModality(Modality.APPLICATION_MODAL); // !!!
-            stage.setResizable(false);
-            stage.show();
-        }
+//        if (screenConfiguration != null) {
+//            screenConfiguration.dialog("Login", "login", Modality.APPLICATION_MODAL, false);
+//        }
 
     }
 
