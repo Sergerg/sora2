@@ -7,7 +7,7 @@ to run:
 `gradle bootRun`
 
 
-`native2ascii`
+Resources: `native2ascii`
 
 1. Only run. Spring init.
 2. Add simple main form.
@@ -15,10 +15,13 @@ to run:
 4. Test for add Contact.
 5. UML. (uses plantuml).
 6. Default forms. Error form.
+7. Login form.
+8. Default form creator.
+9. 
 
 
 
 TODO:
-1. Login form.
 2. Table form.
 3. Autowired service into Controller!!!
+4. Change scenes on form?
