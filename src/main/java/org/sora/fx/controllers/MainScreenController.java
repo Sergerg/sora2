@@ -1,5 +1,6 @@
 package org.sora.fx.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.Modality;
 import org.slf4j.Logger;
@@ -49,11 +50,19 @@ public class MainScreenController extends AbstractController {
 
     }
 
-    public void test() {
-        log.debug("test() ");
+    public void login() {
+        log.debug("login() ");
 
         if (screenConfiguration != null) {
             screenConfiguration.dialog("Login", "login", Modality.APPLICATION_MODAL, false);
+        }
+    }
+
+    public void contacts(ActionEvent actionEvent) {
+        log.debug("contacts() ");
+
+        if (screenConfiguration != null) {
+            screenConfiguration.dialog("Contacts", "contacts", Modality.NONE, false);
         }
     }
 }

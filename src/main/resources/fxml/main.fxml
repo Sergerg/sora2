@@ -18,9 +18,12 @@
         <MenuBar fx:id="menuBar">
             <!--<useSystemMenuBar>true</useSystemMenuBar>-->
             <menus>
-                <Menu text="Test">
+                <Menu text="User">
                     <items>
-                        <MenuItem text="Test" onAction="#test"/>
+                        <MenuItem text="Login" onAction="#login"/>
+                    </items>
+                    <items>
+                        <MenuItem text="Contacts" onAction="#contacts"/>
                     </items>
                 </Menu>
                 <Menu text="Help">
