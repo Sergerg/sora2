@@ -34,13 +34,13 @@ public class ScreenConfiguration {
     @Qualifier("dialog")
     @Scope("prototype")
     public BasicDialog dialog(String title, String dialogName, Modality modal, boolean resizable) {
+        log.debug("title="+title+", dialogname="+dialogName+",resizable="+resizable);
         SceneInterface sceneInterface = form(dialogName);
 
         BasicDialog stage = new BasicDialog();
         Scene scene = sceneInterface.getScene();
         stage.setScene(scene);
         stage.setTitle(title);
-//            stage.initOwner(scene.getWindow());
         stage.initModality(modal);
         stage.setResizable(resizable);
         stage.show();

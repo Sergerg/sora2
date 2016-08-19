@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
  * Date: 03.09.2015
  * Time: 8:34
  */
-// TODO: Make
 public class BasicDialog extends Stage {
 
     private static final Logger log = LoggerFactory.getLogger(BasicDialog.class);

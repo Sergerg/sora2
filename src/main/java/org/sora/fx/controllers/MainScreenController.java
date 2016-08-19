@@ -25,9 +25,6 @@ public class MainScreenController extends AbstractController {
 
     private ContactService contactService;
 
-//    @FXML
-//    MenuBar menuBar;
-
     public MainScreenController(ScreenConfiguration screenConfiguration, ContactService contactService) {
         log.debug("MainScreenController()");
         this.contactService = contactService;
