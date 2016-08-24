@@ -27,8 +27,8 @@ public class ContactsController extends AbstractController {
     @Autowired
     ContactService contactService;
 
-//    @FXML
-//    private TableView<Contact> tableClient;
+    @FXML
+    private TableView<Contact> tableClient;
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
@@ -37,27 +37,30 @@ public class ContactsController extends AbstractController {
         super.initialize(location,resources);
 
         // TODO AutoCreating by Contact?!
-//        tableClient.getColumns().clear();
-//        TableColumn nickCol = new TableColumn("Nick");
-//        nickCol.setCellValueFactory(
-//                new PropertyValueFactory<Contact,String>("nick")
-//        );
-//        TableColumn nameCol = new TableColumn("Name");
-//        nameCol.setCellValueFactory(
-//                new PropertyValueFactory<Contact,String>("name")
-//        );
-//        TableColumn emailCol = new TableColumn("Email");
-//        emailCol.setCellValueFactory(
-//                new PropertyValueFactory<Contact,String>("email")
-//        );
-//        TableColumn phoneCol = new TableColumn("Phone");
-//        phoneCol.setCellValueFactory(
-//                new PropertyValueFactory<Contact,String>("phone")
-//        );
-//        tableClient.getColumns().addAll(nickCol, nameCol, emailCol, phoneCol);
-//
-//        // bind!
-//        tableClient.setItems(contactService.getData());
+        tableClient.getColumns().clear();
+        TableColumn nickCol = new TableColumn("Nick");
+        nickCol.setCellValueFactory(
+                new PropertyValueFactory<Contact,String>("nick")
+        );
+        TableColumn nameCol = new TableColumn("Name");
+        nameCol.setCellValueFactory(
+                new PropertyValueFactory<Contact,String>("name")
+        );
+        TableColumn emailCol = new TableColumn("Email");
+        emailCol.setCellValueFactory(
+                new PropertyValueFactory<Contact,String>("email")
+        );
+        TableColumn phoneCol = new TableColumn("Phone");
+        phoneCol.setCellValueFactory(
+                new PropertyValueFactory<Contact,String>("phone")
+        );
+        tableClient.getColumns().addAll(nickCol, nameCol, emailCol, phoneCol);
+
+        // bind!
+        if (contactService != null) {
+            contactService.loadData();
+            tableClient.setItems(contactService.getData());
+        }
     }
 
 
