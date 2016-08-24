@@ -34,7 +34,7 @@ public class MainSceneBean implements SceneInterface {
     }
 
     @Autowired
-    AppGuiConfiguration appGuiConfiguration;
+    private AppGuiConfiguration appGuiConfiguration;
 
     @Autowired
     private ScreenConfiguration screenConfiguration;

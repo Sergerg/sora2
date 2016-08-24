@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.sora.fx.entity.Contact;
 import org.sora.fx.services.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,7 +26,8 @@ public class ContactsController extends AbstractController {
     private static final Logger log = LoggerFactory.getLogger(AbstractController.class);
 
     @Autowired
-    ContactService contactService;
+    @Qualifier("contactService")
+    private ContactService contactService;
 
     @FXML
     private TableView<Contact> tableClient;
@@ -57,6 +59,7 @@ public class ContactsController extends AbstractController {
         tableClient.getColumns().addAll(nickCol, nameCol, emailCol, phoneCol);
 
         // bind!
+        log.debug("contactService = " + contactService);
         if (contactService != null) {
             contactService.loadData();
             tableClient.setItems(contactService.getData());
