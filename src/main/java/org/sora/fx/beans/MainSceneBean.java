@@ -9,7 +9,9 @@ import org.sora.fx.controllers.MainScreenController;
 import org.sora.fx.services.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,6 +23,7 @@ import java.util.ResourceBundle;
  * Date: 05.08.2016
  * Time: 18:33
  */
+@Component("mainBean")
 public class MainSceneBean implements SceneInterface {
 
     private static final Logger log = LoggerFactory.getLogger(MainScreenConfiguration.class);
@@ -28,7 +31,8 @@ public class MainSceneBean implements SceneInterface {
     private String mainView;
     private String mainResource;
 
-    public MainSceneBean(String mainView, String mainResource) {
+    @Autowired
+    public MainSceneBean(@Value("${ui.main.viewName:main}") String mainView, @Value("${spring.messages.basename}") String mainResource) {
         this.mainView = mainView;
         this.mainResource = mainResource;
     }
@@ -36,16 +40,16 @@ public class MainSceneBean implements SceneInterface {
     @Autowired
     private AppGuiConfiguration appGuiConfiguration;
 
-    @Autowired
-    private ScreenConfiguration screenConfiguration;
+//    @Autowired
+//    private ScreenConfiguration screenConfiguration;
 
-    @Autowired
-    @Qualifier("contactService")
-    ContactService contactService;
+//    @Autowired
+//    @Qualifier("contactService")
+//    ContactService contactService;
 
     @Bean
     MainScreenController controller() {
-        return new MainScreenController(screenConfiguration, contactService);
+        return new MainScreenController(/*screenConfiguration, contactService*/);
     }
 
     @Override
@@ -58,7 +62,7 @@ public class MainSceneBean implements SceneInterface {
         return mainResource;
     }
 
-    @Override
+
     public Scene getScene() {
         log.info("MainSceneBean getParent");
         try {

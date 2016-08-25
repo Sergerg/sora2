@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Time: 7:39
  */
 @Service("contactService")
-@Repository
+//@Repository
 @Transactional
 public class ContactServiceImpl implements ContactService {
 
