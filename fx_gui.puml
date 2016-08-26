@@ -27,7 +27,7 @@ package org.sora.fx.beans {
  }
 
  class MainScreenConfiguration {
-  +void initMainScreen(Stage primaryStage)
+  +void initMainScreen(Stage stage)
  }
 }
 

@@ -35,8 +35,8 @@ public class Application extends javafx.application.Application {
         log.debug("Spring context load ok.");
 
         // start JavaFX spring configuration
-        MainScreenBean mainScreenBean = context.getBean(MainScreenBean.class);
-        mainScreenBean.setPrimaryStage(primaryStage);
+        MainScreenBean mainScreenBean = context.getBean("mainScreenBean", MainScreenBean.class);
+        mainScreenBean.setStage(primaryStage);
         mainScreenBean.show();
 
         log.debug("END start.");
