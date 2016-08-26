@@ -40,7 +40,7 @@ public class MainScreenController extends AbstractController {
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
-        log.debug("initialize() "+contactService);
+        log.debug("initialize()");
         if (contactService != null) {
             contactService.loadData();
             log.info("size of contacts = " + contactService.getData().size());
@@ -48,7 +48,7 @@ public class MainScreenController extends AbstractController {
     }
 
     public void showErrorDialog() {
-        log.debug("showErrorDialog() ");
+        log.debug("showErrorDialog()");
 
 //        if (screenConfiguration != null) {
 //            screenConfiguration.dialog("Error", "error", Modality.APPLICATION_MODAL, false);
