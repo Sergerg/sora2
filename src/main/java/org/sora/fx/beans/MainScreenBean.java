@@ -7,6 +7,7 @@ import org.sora.fx.controllers.MainScreenController;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Component;
  * Time: 14:20
  */
 @Component("mainScreenBean")
-@Lazy
+//@Lazy
 public class MainScreenBean extends AbstractScreenBean {
 
     private static final Logger log = LoggerFactory.getLogger(MainScreenBean.class);
@@ -32,6 +33,7 @@ public class MainScreenBean extends AbstractScreenBean {
     }
 
     @Bean
+    @Scope("prototype")
     public AbstractController getController() {
         AbstractController abstractController = new MainScreenController();
         log.debug("getController = " + abstractController);

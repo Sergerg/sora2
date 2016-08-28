@@ -73,7 +73,7 @@ abstract public class AbstractScreenBean implements ScreenBean {
         try {
             URL fxmlUrl = getClass().getResource(appGuiConfiguration.nameFxmlConverter(getNameForm()));
             FXMLLoader loader = new FXMLLoader(fxmlUrl, ResourceBundle.getBundle(getMainResource()));
-            loader.setControllerFactory(aClass -> getController());
+            loader.setControllerFactory(aClass -> getController()); // TODO: get bean by name from context!
             Parent view = loader.load();
 
             scene = new Scene(view);
