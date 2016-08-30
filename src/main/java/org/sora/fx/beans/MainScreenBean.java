@@ -25,8 +25,7 @@ public class MainScreenBean extends AbstractScreenBean {
     public MainScreenBean(
             @Value("${ui.main.title:JavaFX application}") String windowTitle,
             @Value("${spring.messages.basename}") String mainResource,
-            @Value("main") String nameForm
-    ) {
+            @Value("main") String nameForm) {
         setWindowTitle(windowTitle);
         setMainResource(mainResource);
         setNameForm(nameForm);

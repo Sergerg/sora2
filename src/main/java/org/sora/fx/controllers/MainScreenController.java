@@ -50,6 +50,11 @@ public class MainScreenController extends AbstractController {
     public void showErrorDialog() {
         log.debug("showErrorDialog()");
 
+        if (contactService != null) {
+            contactService.loadData();
+            log.info("size of contacts = " + contactService.getData().size());
+        }
+
 //        if (screenConfiguration != null) {
 //            screenConfiguration.dialog("Error", "error", Modality.APPLICATION_MODAL, false);
 //        }
