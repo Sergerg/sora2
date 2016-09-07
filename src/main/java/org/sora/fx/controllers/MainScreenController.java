@@ -11,6 +11,7 @@ import org.sora.fx.services.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
+import javax.annotation.PostConstruct;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -40,7 +41,16 @@ public class MainScreenController extends AbstractController {
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
-        log.debug("initialize()");
+        log.debug("initialize(), "+contactService);
+        if (contactService != null) {
+            contactService.loadData();
+            log.info("size of contacts = " + contactService.getData().size());
+        }
+    }
+
+    @PostConstruct
+    public void init() {
+        log.debug("init(), "+contactService);
         if (contactService != null) {
             contactService.loadData();
             log.info("size of contacts = " + contactService.getData().size());
